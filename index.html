@@ -5,6 +5,7 @@
    <title>Test recognition </title>
 </head>
 <body>
+
 <button onclick = "speech ()">Слушать</button>
 <button onclick = "talk ()">Проговорить</button>
 <button onclick = "stop ()">Остановить</button>
@@ -17,17 +18,15 @@
     recognizer.interimResults = true;
 
     // Какой язык будем распознавать?
-    recognizer.lang = 'en-US';
+    recognizer.lang = 'ru-Ru';
 
     // Используем колбек для обработки результатов
     recognizer.onresult = function (event) {
         var result = event.results[event.resultIndex];
         if (result.isFinal) {
+            utterance = new SpeechSynthesisUtterance(`${result[0].transcript} это сказал Игорь, он рак в доте, аха-аха-аха`)
             // alert('Вы сказали: ' + result[0].transcript);
-            utterance = new SpeechSynthesisUtterance(`${ result[0].transcript}`);
-            talk();
         } else {
-
             console.log('Промежуточный результат: ', result[0].transcript);
         }
     };
