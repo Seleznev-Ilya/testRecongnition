@@ -38,9 +38,9 @@ recognizer.onresult = function (event) {
         alert('Вы сказали: ' + result[0].transcript);
     } else {
         console.log('Промежуточный результат: ', result[0].transcript);
+        root.innerHTML =  result[0].transcript;
     }
 };
-
 function speech () {
     // Начинаем слушать микрофон и распознавать голос
     recognizer.start();
