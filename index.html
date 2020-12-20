@@ -23,9 +23,11 @@
     recognizer.onresult = function (event) {
         var result = event.results[event.resultIndex];
         if (result.isFinal) {
-            alert('Вы сказали: ' + result[0].transcript);
+            // alert('Вы сказали: ' + result[0].transcript);
+            utterance = new SpeechSynthesisUtterance(`${ result[0].transcript}`);
+            talk();
         } else {
-            utterance = new SpeechSynthesisUtterance(`${ result[0].transcript}`)
+
             console.log('Промежуточный результат: ', result[0].transcript);
         }
     };
